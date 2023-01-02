@@ -1,46 +1,38 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Assumptions
 
-## Available Scripts
+Getting the data all at once and paging will be calculated in the UI.
+Only one breakpoint to be considered - 720px.
+API call will be successful and data structure won't change.
+In case of error an error GIF will be displayed with no title or button (Loading phase is temporary).
 
-In the project directory, you can run:
+# Getting Started with GOT App
 
-### `npm start`
+After reading all the instructions and requirements.
+I decided that I need 3 components to build:
+    1. Header
+    2. Characters Cards - changes on screen size
+    3. Footer - changes on screen size
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+All components above will be parallel to each other and stateless, so they should get what they need from their parent.
+The API call will be from the head component and will be stored in the reducer store for paging purposes.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The store will save all the data and will provide the components the data according the page they ask.
 
-### `npm test`
+Used hook to do the API call according to Best Practice.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+cleaned public directory from unnecessary code and assets.
 
-### `npm run build`
+Used theme provider for better unity.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Added css reset to start from basic and control the css elements as pleased.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Preformance
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Header and Footer will render each time we load additional characters to view.
+We can prevent it with using React.memo() to the header and useCallback to the getNextPage function to the Footer
+However I don't believe the cost is worth it, Additional work for JS and React to do the "magic" behind the scenes is higher rather than to render 2 edge components with no children.
 
-### `npm run eject`
+# Tests
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+I chose to add tests to the reducer as it controls the logic of the app and influences both Cards and Footer components.

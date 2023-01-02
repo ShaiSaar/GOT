@@ -1,0 +1,1 @@
+export const GET_GOT_CHARACTERS = 'https://thronesapi.com/api/v2/Characters';

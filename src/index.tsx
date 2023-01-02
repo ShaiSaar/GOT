@@ -1,15 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ThemeProvider } from 'styled-components';
+import "react-tooltip/dist/react-tooltip.css";
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { StoreProvider } from './state/store';
+import theme from './themes';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <StoreProvider>
+        <App />
+      </StoreProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
